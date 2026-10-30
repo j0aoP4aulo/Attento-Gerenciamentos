@@ -247,11 +247,23 @@ const profissionais = [
   }
 
   const product = document.createElement("div");
+  const color = "#" + 
+    Math.floor(Math.random() * 16777216)
+    .toString(16)
+    .padStart(6, "0");
   product.className = "item-card";
+  product.style.background = color;
 
   const productName = document.createElement("strong");
-  productName.innerHTML = `<div class="title">${name} — ${price.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}/un</div>`;
-  
+  productName.innerHTML = ` 
+    <div class="item-header">
+      <div class="title">${name} — ${price.toLocaleString("pt-BR", {style: "currency",currency: "BRL"})}/un</div>
+      <div class="right">
+        <span class="pending-pill">${currency(999)} a pagar</span>
+        <button class="add-btn">+ Add</button>
+      </div>
+    </div>`;
+
 
   product.append(productName);
   board.appendChild(product);
